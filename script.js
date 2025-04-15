@@ -30,13 +30,13 @@ class Game {
       for (let j = 0; j < this.WIDTH; j++) {
         const div = document.createElement("div");
         div.className = "cell";
-        div.onclick = (e) => {
+        div.addEventListener("click", (e) => {
           if (this.isAlive(e.target)) {
             this.kill(e.target);
           } else {
-            e.target.className += " alive";
+            this.revive(e.target);
           }
-        };
+        });
         divParent.appendChild(div);
       }
       this.rootElement.appendChild(divParent);
@@ -57,7 +57,7 @@ class Game {
    * @param {HTMLElement} el - L’élément cellule à rendre vivant
    */
   revive(el) {
-    el.className += " alive";
+    el.classList.add("alive");
   }
 
   /**
@@ -65,7 +65,7 @@ class Game {
    * @param {HTMLElement} el - L’élément cellule à tuer
    */
   kill(el) {
-    el.className = el.className.replaceAll("alive");
+    el.classList.remove("alive");
   }
 
   /**
