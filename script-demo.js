@@ -89,7 +89,7 @@ class Game {
 
 const game = new Game();
 
-window.addEventListener("keydown", (e) => {
+window.addEventListener("" /* event */, (e) => {
   switch (e.key.toLowerCase()) {
     case "s":
       game.start();
