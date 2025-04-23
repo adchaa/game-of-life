@@ -26,16 +26,12 @@ class Game {
   #init() {
     for (let i = 0; i < this.HEIGHT; i++) {
       const divParent = document.createElement("div");
-      divParent.className = "line";
+      divParent.classList.add("line");
       for (let j = 0; j < this.WIDTH; j++) {
         const div = document.createElement("div");
-        div.className = "cell";
+        div.classList.add("cell");
         div.addEventListener("click", (e) => {
-          if (this.isAlive(e.target)) {
-            this.kill(e.target);
-          } else {
-            this.revive(e.target);
-          }
+          e.target.classList.toggle("alive");
         });
         divParent.appendChild(div);
       }
@@ -49,7 +45,7 @@ class Game {
    * @returns {boolean} True si la cellule est vivante, false sinon
    */
   isAlive(el) {
-    return el.className.includes("alive");
+    return el.classList.contains("alive");
   }
 
   /**
